@@ -2,502 +2,587 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROXAT CHOYXONA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROXAT CHOYXONA</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #071b14;
-      color: #f8f1df;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header {
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #0b241a;
-      border-bottom: 1px solid #b99545;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #071b14;
+  color: #f8f1df;
+}
 
-    .logo {
-      color: #d8b45b;
-      font-size: 27px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+header {
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  background: #0b241a;
+  border-bottom: 1px solid #b99545;
+}
 
-    nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.logo {
+  color: #e4c16b;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    nav a {
-      color: #f8f1df;
-      text-decoration: none;
-    }
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-    nav a:hover {
-      color: #d8b45b;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+}
 
-    .hero {
-      min-height: 420px;
-      padding: 80px 7%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,.25)),
-        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
-        center/cover;
-    }
+nav a:hover {
+  color: #e4c16b;
+}
 
-    .hero h1 {
-      color: #e4c16b;
-      font-size: clamp(35px, 6vw, 60px);
-      margin-bottom: 15px;
-    }
+.hero {
+  min-height: 440px;
+  padding: 80px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.3)),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+    center/cover;
+}
 
-    .hero p {
-      font-size: 18px;
-      max-width: 500px;
-      line-height: 1.6;
-    }
+.hero h1 {
+  color: #e4c16b;
+  font-size: clamp(36px, 6vw, 65px);
+  margin-bottom: 18px;
+}
 
-    .section {
-      padding: 55px 7%;
-    }
+.hero p {
+  font-size: 18px;
+  max-width: 520px;
+  line-height: 1.7;
+}
 
-    .section-title {
-      text-align: center;
-      color: #e4c16b;
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
+.hero a {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 25px;
+  padding: 13px 25px;
+  background: #c49b45;
+  color: #071b14;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-    }
+.section {
+  padding: 55px 7%;
+}
 
-    .food-card {
-      background: #102b20;
-      border: 1px solid #80672f;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: .3s;
-    }
+.section-title {
+  text-align: center;
+  color: #e4c16b;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
 
-    .food-card:hover {
-      transform: translateY(-5px);
-    }
+.category-title {
+  grid-column: 1 / -1;
+  color: #e4c16b;
+  font-size: 23px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #80672f;
+}
 
-    .food-card img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-    }
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
 
-    .food-info {
-      padding: 17px;
-    }
+.food-card {
+  background: #102b20;
+  border: 1px solid #80672f;
+  border-radius: 14px;
+  padding: 22px;
+  transition: .3s;
+}
 
-    .food-info h3 {
-      color: #e4c16b;
-      margin-bottom: 10px;
-    }
+.food-card:hover {
+  transform: translateY(-5px);
+  border-color: #e4c16b;
+}
 
-    .price {
-      margin: 12px 0;
-      font-weight: bold;
-    }
+.food-card h3 {
+  color: #e4c16b;
+  margin-bottom: 12px;
+  font-size: 19px;
+}
 
-    button {
-      background: #c49b45;
-      color: #102016;
-      border: none;
-      padding: 11px 17px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.price {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 17px;
+}
 
-    button:hover {
-      background: #e6c36f;
-    }
+button {
+  background: #c49b45;
+  color: #102016;
+  border: none;
+  padding: 11px 15px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .cart {
-      background: #102b20;
-      border: 1px solid #80672f;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 750px;
-      margin: auto;
-    }
+button:hover {
+  background: #e6c36f;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #52664f;
-      padding: 13px 0;
-      flex-wrap: wrap;
-    }
+.cart {
+  background: #102b20;
+  border: 1px solid #80672f;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: auto;
+}
 
-    .cart-controls {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #52664f;
+  padding: 15px 0;
+  flex-wrap: wrap;
+}
 
-    .cart-controls button {
-      padding: 6px 11px;
-    }
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .remove {
-      background: #9d3e35;
-      color: white;
-    }
+.cart-controls button {
+  padding: 7px 12px;
+}
 
-    .total {
-      margin-top: 20px;
-      line-height: 2;
-      font-size: 17px;
-    }
+.remove {
+  background: #9d3e35;
+  color: white;
+}
 
-    .total strong {
-      color: #e4c16b;
-      font-size: 21px;
-    }
+.total {
+  margin-top: 20px;
+  line-height: 2.1;
+  font-size: 17px;
+}
 
-    .order-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 15px;
-      font-size: 16px;
-    }
+.total strong {
+  color: #e4c16b;
+  font-size: 21px;
+}
 
-    .social {
-      text-align: center;
-      background: #0b241a;
-      padding: 45px 20px;
-    }
+.order-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 16px;
+}
 
-    .social h2 {
-      color: #e4c16b;
-      margin-bottom: 15px;
-    }
+.social {
+  text-align: center;
+  background: #0b241a;
+  padding: 50px 20px;
+}
 
-    .social p {
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
+.social h2 {
+  color: #e4c16b;
+  margin-bottom: 18px;
+}
 
-    .social a {
-      display: inline-block;
-      color: #e4c16b;
-      border: 1px solid #c49b45;
-      padding: 12px 20px;
-      margin: 6px;
-      border-radius: 8px;
-      text-decoration: none;
-    }
+.social p {
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
 
-    .social a:hover {
-      background: #c49b45;
-      color: #102016;
-    }
+.social a {
+  display: inline-block;
+  color: #e4c16b;
+  border: 1px solid #c49b45;
+  padding: 12px 20px;
+  margin: 6px;
+  border-radius: 8px;
+  text-decoration: none;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #c7b98f;
-      background: #06150f;
-    }
+.social a:hover {
+  background: #c49b45;
+  color: #102016;
+}
 
-    @media(max-width: 600px) {
-      header {
-        flex-direction: column;
-      }
+footer {
+  text-align: center;
+  padding: 22px;
+  color: #c7b98f;
+  background: #06150f;
+}
 
-      .hero {
-        min-height: 350px;
-      }
+@media(max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
 
-      .section {
-        padding: 40px 5%;
-      }
-    }
-  </style>
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: 350px;
+  }
+
+  .section {
+    padding: 40px 5%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">ROXAT CHOYXONA</div>
+<header>
+  <div class="logo">ROXAT CHOYXONA</div>
 
-    <nav>
-      <a href="#home">Bosh sahifa</a>
-      <a href="#menu">Menyu</a>
-      <a href="#cart">Savatcha</a>
-      <a href="#social">Aloqa</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="#home">Bosh sahifa</a>
+    <a href="#menu">Menyu</a>
+    <a href="#cart">Savatcha</a>
+    <a href="#social">Aloqa</a>
+  </nav>
+</header>
 
-  <section class="hero" id="home">
-    <h1>ROXAT CHOYXONA</h1>
-    <p>
-      Milliy taomlar, ajoyib muhit va unutilmas ta'm.
-      Sizni mazali taomlarimiz bilan kutib qolamiz!
-    </p>
-  </section>
+<section class="hero" id="home">
+  <h1>ROXAT CHOYXONA</h1>
+  <p>
+    Milliy taomlar, ajoyib muhit va unutilmas ta'm.
+    Sizni mazali taomlarimiz bilan kutib qolamiz!
+  </p>
+  <a href="#menu">Menyuni ko'rish</a>
+</section>
 
-  <section class="section" id="menu">
-    <h2 class="section-title">Bizning menyu</h2>
-    <div class="menu" id="menuList"></div>
-  </section>
+<section class="section" id="menu">
+  <h2 class="section-title">Bizning menyu</h2>
+  <div class="menu" id="menuList"></div>
+</section>
 
-  <section class="section" id="cart">
-    <h2 class="section-title">Savatchangiz</h2>
+<section class="section" id="cart">
+  <h2 class="section-title">Savatchangiz</h2>
 
-    <div class="cart">
-      <div id="cartItems">Savatcha hozircha bo‘sh.</div>
+  <div class="cart">
+    <div id="cartItems">Savatcha hozircha bo'sh.</div>
 
-      <div class="total">
-        <p>Mahsulotlar: <span id="subtotal">0</span> so‘m</p>
-        <p>Xizmat haqi (10%): <span id="service">0</span> so‘m</p>
-        <p>Jami: <strong id="total">0</strong> so‘m</p>
-        <p>Stol raqami: <strong id="tableNumber">Belgilanmagan</strong></p>
-      </div>
-
-      <button class="order-btn" onclick="sendOrder()">
-        Telegram orqali buyurtma berish
-      </button>
+    <div class="total">
+      <p>Mahsulotlar: <span id="subtotal">0</span> so'm</p>
+      <p>Xizmat haqi (10%): <span id="service">0</span> so'm</p>
+      <p>Jami: <strong id="total">0</strong> so'm</p>
+      <p>Stol raqami: <strong id="tableNumber">Belgilanmagan</strong></p>
     </div>
-  </section>
 
-  <section class="social" id="social">
-    <h2>Bizning rasmiy sahifalarimiz</h2>
+    <button class="order-btn" onclick="sendOrder()">
+      Telegram orqali buyurtma berish
+    </button>
+  </div>
+</section>
 
-    <p>
-      ROXAT CHOYXONA yangiliklari, yangi taomlar,
-      aksiyalar va e'lonlarni rasmiy sahifalarimizda kuzatib boring!
-    </p>
+<section class="social" id="social">
+  <h2>Bizning rasmiy sahifalarimiz</h2>
 
-    <a href="https://instagram.com/roxat.navruz" target="_blank">
-      Instagram
-    </a>
+  <p>
+    Yangi taomlar, yangiliklar va aksiyalarni
+    rasmiy sahifalarimizda kuzatib boring!
+  </p>
 
-    <a href="https://t.me/roxat.navruz" target="_blank">
-      Telegram yangiliklar
-    </a>
-  </section>
+  <a href="https://instagram.com/roxat.navruz" target="_blank">
+    Instagram
+  </a>
 
-  <footer>
-    © 2026 ROXAT CHOYXONA. Barcha huquqlar himoyalangan.
-  </footer>
+  <a href="https://t.me/roxat.navruz" target="_blank">
+    Telegram yangiliklar
+  </a>
+</section>
 
-  <script>
-    const foods = [
-      {
-        name: "Osh",
-        price: 30000,
-        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19"
-      },
-      {
-        name: "Manti",
-        price: 25000,
-        image: "https://images.unsplash.com/photo-1563245372-f21724e3856d"
-      },
-      {
-        name: "Lag'mon",
-        price: 28000,
-        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624"
-      },
-      {
-        name: "Shashlik",
-        price: 20000,
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947"
-      },
-      {
-        name: "Sho'rva",
-        price: 25000,
-        image: "https://images.unsplash.com/photo-1547592180-85f173990554"
-      },
-      {
-        name: "Somsa",
-        price: 10000,
-        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950"
-      }
-    ];
+<footer>
+  © 2026 ROXAT CHOYXONA. Barcha huquqlar himoyalangan.
+</footer>
 
-    let cart = [];
+<script>
+const foods = [
+  {
+    name: "Sho'rva",
+    price: 30000,
+    category: "Suyuq taomlar"
+  },
+  {
+    name: "Lag'mon",
+    price: 35000,
+    category: "Suyuq taomlar"
+  },
+  {
+    name: "Mastava",
+    price: 30000,
+    category: "Suyuq taomlar"
+  },
+  {
+    name: "Chuchvara",
+    price: 30000,
+    category: "Suyuq taomlar"
+  },
+  {
+    name: "Krilishka fri",
+    price: 40000,
+    category: "Asosiy taomlar"
+  },
+  {
+    name: "Fri",
+    price: 15000,
+    category: "Asosiy taomlar"
+  },
+  {
+    name: "Manti (1 dona)",
+    price: 8000,
+    category: "Asosiy taomlar"
+  },
+  {
+    name: "Tabaka",
+    price: 65000,
+    category: "Asosiy taomlar"
+  },
+  {
+    name: "Vaguri (1 kg)",
+    price: 280000,
+    category: "Kilogramm bo'yicha"
+  },
+  {
+    name: "Jiz (1 kg)",
+    price: 280000,
+    category: "Kilogramm bo'yicha"
+  },
+  {
+    name: "Baliq (1 kg)",
+    price: 90000,
+    category: "Kilogramm bo'yicha"
+  },
+  {
+    name: "Qo'y jaz",
+    price: 32000,
+    category: "Shashliklar"
+  },
+  {
+    name: "Qiymali shashlik (20 minglik)",
+    price: 20000,
+    category: "Shashliklar"
+  },
+  {
+    name: "Qiymali shashlik (15 minglik)",
+    price: 15000,
+    category: "Shashliklar"
+  },
+  {
+    name: "O'rdak",
+    price: 20000,
+    category: "Shashliklar"
+  },
+  {
+    name: "Tovuq qanot",
+    price: 20000,
+    category: "Shashliklar"
+  },
+  {
+    name: "Dumba",
+    price: 25000,
+    category: "Shashliklar"
+  },
+  {
+    name: "Mangal tovuq",
+    price: 65000,
+    category: "Shashliklar"
+  }
+];
 
-    const params = new URLSearchParams(window.location.search);
-    const requestedTable = Number(params.get("stol"));
+let cart = [];
 
-    const tableNumber =
-      Number.isInteger(requestedTable) &&
-      requestedTable >= 1 &&
-      requestedTable <= 30
-        ? requestedTable
-        : null;
+const params = new URLSearchParams(window.location.search);
+const requestedTable = Number(params.get("stol"));
 
-    document.getElementById("tableNumber").textContent =
-      tableNumber ? tableNumber : "Belgilanmagan";
+const tableNumber =
+  Number.isInteger(requestedTable) &&
+  requestedTable >= 1 &&
+  requestedTable <= 30
+    ? requestedTable
+    : null;
 
-    function renderMenu() {
-      const menu = document.getElementById("menuList");
+document.getElementById("tableNumber").textContent =
+  tableNumber ? tableNumber : "Belgilanmagan";
 
-      menu.innerHTML = foods.map((food, index) => `
+function renderMenu() {
+  const menu = document.getElementById("menuList");
+  const categories = [...new Set(foods.map(food => food.category))];
+
+  menu.innerHTML = categories.map(category => `
+    <h2 class="category-title">${category}</h2>
+
+    ${foods.map((food, index) => {
+      if (food.category !== category) return "";
+
+      return `
         <div class="food-card">
-          <img src="${food.image}" alt="${food.name}">
-          <div class="food-info">
-            <h3>${food.name}</h3>
-            <p class="price">${food.price.toLocaleString("uz-UZ")} so'm</p>
-            <button onclick="addToCart(${index})">
-              Savatchaga qo'shish
-            </button>
-          </div>
+          <h3>${food.name}</h3>
+          <p class="price">
+            ${food.price.toLocaleString("uz-UZ")} so'm
+          </p>
+          <button onclick="addToCart(${index})">
+            Savatchaga qo'shish
+          </button>
         </div>
-      `).join("");
-    }
+      `;
+    }).join("")}
+  `).join("");
+}
 
-    function addToCart(index) {
-      const food = foods[index];
-      const existing = cart.find(item => item.name === food.name);
+function addToCart(index) {
+  const food = foods[index];
+  const existing = cart.find(item => item.name === food.name);
 
-      if (existing) {
-        existing.quantity++;
-      } else {
-        cart.push({
-          name: food.name,
-          price: food.price,
-          quantity: 1
-        });
-      }
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      name: food.name,
+      price: food.price,
+      quantity: 1
+    });
+  }
 
-      renderCart();
-    }
+  renderCart();
+}
 
-    function changeQuantity(index, amount) {
-      cart[index].quantity += amount;
+function changeQuantity(index, amount) {
+  cart[index].quantity += amount;
 
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      }
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
 
-      renderCart();
-    }
+  renderCart();
+}
 
-    function removeItem(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
 
-    function renderCart() {
-      const cartItems = document.getElementById("cartItems");
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
 
-      if (cart.length === 0) {
-        cartItems.innerHTML = "Savatcha hozircha bo'sh.";
-      } else {
-        cartItems.innerHTML = cart.map((item, index) => `
-          <div class="cart-item">
-            <div>
-              <strong>${item.name}</strong>
-              <br>
-              ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm
-            </div>
+  if (cart.length === 0) {
+    cartItems.innerHTML = "Savatcha hozircha bo'sh.";
+  } else {
+    cartItems.innerHTML = cart.map((item, index) => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong>
+          <br>
+          ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm
+        </div>
 
-            <div class="cart-controls">
-              <button onclick="changeQuantity(${index}, -1)">−</button>
-              <span>${item.quantity}</span>
-              <button onclick="changeQuantity(${index}, 1)">+</button>
-              <button class="remove" onclick="removeItem(${index})">
-                O'chirish
-              </button>
-            </div>
-          </div>
-        `).join("");
-      }
+        <div class="cart-controls">
+          <button onclick="changeQuantity(${index}, -1)">−</button>
+          <span>${item.quantity}</span>
+          <button onclick="changeQuantity(${index}, 1)">+</button>
+          <button class="remove" onclick="removeItem(${index})">
+            O'chirish
+          </button>
+        </div>
+      </div>
+    `).join("");
+  }
 
-      const subtotal = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity, 0
-      );
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
 
-      const service = Math.round(subtotal * 0.10);
-      const total = subtotal + service;
+  const service = Math.round(subtotal * 0.10);
+  const total = subtotal + service;
 
-      document.getElementById("subtotal").textContent =
-        subtotal.toLocaleString("uz-UZ");
+  document.getElementById("subtotal").textContent =
+    subtotal.toLocaleString("uz-UZ");
 
-      document.getElementById("service").textContent =
-        service.toLocaleString("uz-UZ");
+  document.getElementById("service").textContent =
+    service.toLocaleString("uz-UZ");
 
-      document.getElementById("total").textContent =
-        total.toLocaleString("uz-UZ");
-    }
+  document.getElementById("total").textContent =
+    total.toLocaleString("uz-UZ");
+}
 
-    function sendOrder() {
-      if (cart.length === 0) {
-        alert("Avval savatchaga taom qo'shing!");
-        return;
-      }
+async function sendOrder() {
+  if (cart.length === 0) {
+    alert("Avval savatchaga taom qo'shing!");
+    return;
+  }
 
-      const subtotal = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity, 0
-      );
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
 
-      const service = Math.round(subtotal * 0.10);
-      const total = subtotal + service;
+  const service = Math.round(subtotal * 0.10);
+  const total = subtotal + service;
 
-      const message = [
-        "ROXAT CHOYXONA — YANGI BUYURTMA",
-        "",
-        "Stol: " + (tableNumber || "Belgilanmagan"),
-        "",
-        ...cart.map(item =>
-          `${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm`
-        ),
-        "",
-        "Mahsulotlar: " + subtotal.toLocaleString("uz-UZ") + " so'm",
-        "Xizmat haqi: " + service.toLocaleString("uz-UZ") + " so'm",
-        "JAMI: " + total.toLocaleString("uz-UZ") + " so'm"
-      ].join("\n");
+  const message = [
+    "ROXAT CHOYXONA — YANGI BUYURTMA",
+    "",
+    "Stol: " + (tableNumber || "Belgilanmagan"),
+    "",
+    ...cart.map(item =>
+      `${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm`
+    ),
+    "",
+    "Mahsulotlar: " + subtotal.toLocaleString("uz-UZ") + " so'm",
+    "Xizmat haqi: " + service.toLocaleString("uz-UZ") + " so'm",
+    "JAMI: " + total.toLocaleString("uz-UZ") + " so'm"
+  ].join("\n");
 
-      // Buyurtma guruhini ochadi.
-      // Guruhga xabarni avtomatik yuborish uchun Telegram bot va server kerak.
-      const telegramLink = "https://t.me/Roxat_choyxonaa";
+  try {
+    await navigator.clipboard.writeText(message);
+    alert("Buyurtma matni nusxalandi. Telegram guruhiga kirib yuboring.");
+  } catch (error) {
+    alert("Buyurtma matnini nusxalash imkoni bo'lmadi. Telegram guruhiga o'ting.");
+  }
 
-      window.open(telegramLink, "_blank");
+  window.open("https://t.me/Roxat_choyxonaa", "_blank");
+}
 
-      // Buyurtma matnini nusxalashga yordam beradi.
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(message)
-          .then(() => alert("Buyurtma matni nusxalandi. Telegram guruhiga kirib yuboring."))
-          .catch(() => alert("Telegram guruhiga kirib, buyurtmangizni yozing."));
-      } else {
-        alert("Telegram guruhiga kirib, buyurtmangizni yozing.");
-      }
-    }
-
-    renderMenu();
-    renderCart();
-  </script>
+renderMenu();
+renderCart();
+</script>
 
 </body>
 </html>
