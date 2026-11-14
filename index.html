@@ -317,16 +317,16 @@ footer {
   <h2>Bizning rasmiy sahifalarimiz</h2>
 
   <p>
-    Yangi taomlar, yangiliklar va aksiyalarni
-    rasmiy sahifalarimizda kuzatib boring!
+    ROXAT CHOYXONA yangiliklari, yangi taomlar
+    va aksiyalarni rasmiy sahifalarimizda kuzatib boring!
   </p>
 
-  <a href="https://instagram.com/roxat.navruz" target="_blank">
-    Instagram
+  <a href="https://t.me/roxat_navruz" target="_blank" rel="noopener noreferrer">
+    Telegram yangiliklar
   </a>
 
-  <a href="https://t.me/roxat.navruz" target="_blank">
-    Telegram yangiliklar
+  <a href="https://instagram.com/roxat.navruz" target="_blank" rel="noopener noreferrer">
+    Instagram
   </a>
 </section>
 
@@ -336,96 +336,27 @@ footer {
 
 <script>
 const foods = [
-  {
-    name: "Sho'rva",
-    price: 30000,
-    category: "Suyuq taomlar"
-  },
-  {
-    name: "Lag'mon",
-    price: 35000,
-    category: "Suyuq taomlar"
-  },
-  {
-    name: "Mastava",
-    price: 30000,
-    category: "Suyuq taomlar"
-  },
-  {
-    name: "Chuchvara",
-    price: 30000,
-    category: "Suyuq taomlar"
-  },
-  {
-    name: "Krilishka fri",
-    price: 40000,
-    category: "Asosiy taomlar"
-  },
-  {
-    name: "Fri",
-    price: 15000,
-    category: "Asosiy taomlar"
-  },
-  {
-    name: "Manti (1 dona)",
-    price: 8000,
-    category: "Asosiy taomlar"
-  },
-  {
-    name: "Tabaka",
-    price: 65000,
-    category: "Asosiy taomlar"
-  },
-  {
-    name: "Vaguri (1 kg)",
-    price: 280000,
-    category: "Kilogramm bo'yicha"
-  },
-  {
-    name: "Jiz (1 kg)",
-    price: 280000,
-    category: "Kilogramm bo'yicha"
-  },
-  {
-    name: "Baliq (1 kg)",
-    price: 90000,
-    category: "Kilogramm bo'yicha"
-  },
-  {
-    name: "Qo'y jaz",
-    price: 32000,
-    category: "Shashliklar"
-  },
-  {
-    name: "Qiymali shashlik (20 minglik)",
-    price: 20000,
-    category: "Shashliklar"
-  },
-  {
-    name: "Qiymali shashlik (15 minglik)",
-    price: 15000,
-    category: "Shashliklar"
-  },
-  {
-    name: "O'rdak",
-    price: 20000,
-    category: "Shashliklar"
-  },
-  {
-    name: "Tovuq qanot",
-    price: 20000,
-    category: "Shashliklar"
-  },
-  {
-    name: "Dumba",
-    price: 25000,
-    category: "Shashliklar"
-  },
-  {
-    name: "Mangal tovuq",
-    price: 65000,
-    category: "Shashliklar"
-  }
+  { name: "Sho'rva", price: 30000, category: "Suyuq taomlar" },
+  { name: "Lag'mon", price: 35000, category: "Suyuq taomlar" },
+  { name: "Mastava", price: 30000, category: "Suyuq taomlar" },
+  { name: "Chuchvara", price: 30000, category: "Suyuq taomlar" },
+
+  { name: "Krilishka fri", price: 40000, category: "Asosiy taomlar" },
+  { name: "Fri", price: 15000, category: "Asosiy taomlar" },
+  { name: "Manti (1 dona)", price: 8000, category: "Asosiy taomlar" },
+  { name: "Tabaka", price: 65000, category: "Asosiy taomlar" },
+
+  { name: "Vaguri (1 kg)", price: 280000, category: "Kilogramm bo'yicha" },
+  { name: "Jiz (1 kg)", price: 280000, category: "Kilogramm bo'yicha" },
+  { name: "Baliq (1 kg)", price: 90000, category: "Kilogramm bo'yicha" },
+
+  { name: "Qo'y jaz", price: 32000, category: "Shashliklar" },
+  { name: "Qiymali shashlik (20 minglik)", price: 20000, category: "Shashliklar" },
+  { name: "Qiymali shashlik (15 minglik)", price: 15000, category: "Shashliklar" },
+  { name: "O'rdak", price: 20000, category: "Shashliklar" },
+  { name: "Tovuq qanot", price: 20000, category: "Shashliklar" },
+  { name: "Dumba", price: 25000, category: "Shashliklar" },
+  { name: "Mangal tovuq", price: 65000, category: "Shashliklar" }
 ];
 
 let cart = [];
@@ -574,7 +505,7 @@ async function sendOrder() {
     await navigator.clipboard.writeText(message);
     alert("Buyurtma matni nusxalandi. Telegram guruhiga kirib yuboring.");
   } catch (error) {
-    alert("Buyurtma matnini nusxalash imkoni bo'lmadi. Telegram guruhiga o'ting.");
+    alert("Matnni avtomatik nusxalash imkoni bo'lmadi. Telegram guruhiga o'ting.");
   }
 
   window.open("https://t.me/Roxat_choyxonaa", "_blank");
