@@ -13,9 +13,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: Arial, sans-serif;
@@ -52,9 +50,7 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover {
-  color: #e4c16b;
-}
+nav a:hover { color: #e4c16b; }
 
 .hero {
   min-height: 440px;
@@ -92,9 +88,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-.section {
-  padding: 55px 7%;
-}
+.section { padding: 55px 7%; }
 
 .section-title {
   text-align: center;
@@ -137,6 +131,40 @@ nav a:hover {
   font-size: 19px;
 }
 
+.food-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 155px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1b3b2d;
+}
+
+.food-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+.food-card:hover .food-image { transform: scale(1.04); }
+
+.food-emoji {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 27, 20, .88);
+  border: 1px solid #e4c16b;
+  border-radius: 50%;
+  font-size: 23px;
+}
+
 .price {
   margin-bottom: 15px;
   font-weight: bold;
@@ -153,9 +181,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #e6c36f;
-}
+button:hover { background: #e6c36f; }
 
 .cart {
   background: #102b20;
@@ -182,9 +208,7 @@ button:hover {
   gap: 8px;
 }
 
-.cart-controls button {
-  padding: 7px 12px;
-}
+.cart-controls button { padding: 7px 12px; }
 
 .remove {
   background: #9d3e35;
@@ -248,21 +272,10 @@ footer {
 }
 
 @media(max-width: 600px) {
-  header {
-    flex-direction: column;
-  }
-
-  nav {
-    justify-content: center;
-  }
-
-  .hero {
-    min-height: 350px;
-  }
-
-  .section {
-    padding: 40px 5%;
-  }
+  header { flex-direction: column; }
+  nav { justify-content: center; }
+  .hero { min-height: 350px; }
+  .section { padding: 40px 5%; }
 }
 </style>
 </head>
@@ -336,27 +349,27 @@ footer {
 
 <script>
 const foods = [
-  { name: "Sho'rva", price: 30000, category: "Suyuq taomlar" },
-  { name: "Lag'mon", price: 35000, category: "Suyuq taomlar" },
-  { name: "Mastava", price: 30000, category: "Suyuq taomlar" },
-  { name: "Chuchvara", price: 30000, category: "Suyuq taomlar" },
+  { name: "Sho'rva", price: 30000, category: "Suyuq taomlar", emoji: "🍲", image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
+  { name: "Lag'mon", price: 35000, category: "Suyuq taomlar", emoji: "🍜", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" },
+  { name: "Mastava", price: 30000, category: "Suyuq taomlar", emoji: "🍚", image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
+  { name: "Chuchvara", price: 30000, category: "Suyuq taomlar", emoji: "🥣", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" },
 
-  { name: "Krilishka fri", price: 40000, category: "Asosiy taomlar" },
-  { name: "Fri", price: 15000, category: "Asosiy taomlar" },
-  { name: "Manti (1 dona)", price: 8000, category: "Asosiy taomlar" },
-  { name: "Tabaka", price: 65000, category: "Asosiy taomlar" },
+  { name: "Krilishka fri", price: 40000, category: "Asosiy taomlar", emoji: "🍗", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80" },
+  { name: "Fri", price: 15000, category: "Asosiy taomlar", emoji: "🍟", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80" },
+  { name: "Manti (1 dona)", price: 8000, category: "Asosiy taomlar", emoji: "🥟", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" },
+  { name: "Tabaka", price: 65000, category: "Asosiy taomlar", emoji: "🍗", image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80" },
 
-  { name: "Vaguri (1 kg)", price: 280000, category: "Kilogramm bo'yicha" },
-  { name: "Jiz (1 kg)", price: 280000, category: "Kilogramm bo'yicha" },
-  { name: "Baliq (1 kg)", price: 90000, category: "Kilogramm bo'yicha" },
+  { name: "Vaguri (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🥩", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
+  { name: "Jiz (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🍖", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
+  { name: "Baliq (1 kg)", price: 90000, category: "Kilogramm bo'yicha", emoji: "🐟", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80" },
 
-  { name: "Qo'y jaz", price: 32000, category: "Shashliklar" },
-  { name: "Qiymali shashlik (20 minglik)", price: 20000, category: "Shashliklar" },
-  { name: "Qiymali shashlik (15 minglik)", price: 15000, category: "Shashliklar" },
-  { name: "O'rdak", price: 20000, category: "Shashliklar" },
-  { name: "Tovuq qanot", price: 20000, category: "Shashliklar" },
-  { name: "Dumba", price: 25000, category: "Shashliklar" },
-  { name: "Mangal tovuq", price: 65000, category: "Shashliklar" }
+  { name: "Qo'y jaz", price: 32000, category: "Shashliklar", emoji: "🍖", image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80" },
+  { name: "Qiymali shashlik (20 minglik)", price: 20000, category: "Shashliklar", emoji: "🍢", image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80" },
+  { name: "Qiymali shashlik (15 minglik)", price: 15000, category: "Shashliklar", emoji: "🍢", image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80" },
+  { name: "O'rdak", price: 20000, category: "Shashliklar", emoji: "🦆", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
+  { name: "Tovuq qanot", price: 20000, category: "Shashliklar", emoji: "🍗", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80" },
+  { name: "Dumba", price: 25000, category: "Shashliklar", emoji: "🥓", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
+  { name: "Mangal tovuq", price: 65000, category: "Shashliklar", emoji: "🔥", image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80" }
 ];
 
 let cart = [];
@@ -386,10 +399,24 @@ function renderMenu() {
 
       return `
         <div class="food-card">
-          <h3>${food.name}</h3>
+          <div class="food-image-wrap">
+            <img
+              class="food-image"
+              src="${food.image}"
+              alt="${food.name}"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              onerror="this.style.display='none';"
+            >
+            <span class="food-emoji" aria-hidden="true">${food.emoji}</span>
+          </div>
+
+          <h3>${food.emoji} ${food.name}</h3>
+
           <p class="price">
             ${food.price.toLocaleString("uz-UZ")} so'm
           </p>
+
           <button onclick="addToCart(${index})">
             Savatchaga qo'shish
           </button>
