@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  padding: 20px 7%;
+  padding: 18px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,11 +29,14 @@ header {
   gap: 15px;
   background: #0b241a;
   border-bottom: 1px solid #b99545;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
   color: #e4c16b;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -47,30 +50,32 @@ nav {
 nav a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 nav a:hover { color: #e4c16b; }
 
 .hero {
-  min-height: 360px;
-  padding: 60px 7%;
+  min-height: 340px;
+  padding: 55px 7%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background:
-    radial-gradient(circle at top right, rgba(228, 193, 107, 0.16), transparent 45%),
+    radial-gradient(circle at top right, rgba(228, 193, 107, 0.18), transparent 45%),
     linear-gradient(120deg, #061711 0%, #0e2e21 60%, #153b2b 100%);
   border-bottom: 1px solid #52664f;
 }
 
 .hero h1 {
   color: #e4c16b;
-  font-size: clamp(34px, 6vw, 60px);
-  margin-bottom: 16px;
+  font-size: clamp(32px, 6vw, 56px);
+  margin-bottom: 14px;
 }
 
 .hero p {
-  font-size: 17px;
+  font-size: 16px;
   max-width: 560px;
   line-height: 1.7;
 }
@@ -78,8 +83,8 @@ nav a:hover { color: #e4c16b; }
 .hero a {
   display: inline-block;
   width: fit-content;
-  margin-top: 22px;
-  padding: 13px 25px;
+  margin-top: 20px;
+  padding: 12px 24px;
   background: #c49b45;
   color: #071b14;
   border-radius: 8px;
@@ -87,57 +92,57 @@ nav a:hover { color: #e4c16b; }
   font-weight: bold;
 }
 
-.section { padding: 50px 7%; }
+.section { padding: 45px 7%; }
 
 .section-title {
   text-align: center;
   color: #e4c16b;
-  font-size: 30px;
-  margin-bottom: 28px;
+  font-size: 28px;
+  margin-bottom: 24px;
 }
 
 .category-title {
   grid-column: 1 / -1;
   color: #e4c16b;
-  font-size: 22px;
+  font-size: 21px;
   margin-top: 22px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #80672f;
 }
 
 .menu {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 18px;
 }
 
 .food-card {
   background: #102b20;
   border: 1px solid #80672f;
   border-radius: 14px;
-  padding: 20px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: .3s;
+  transition: .25s;
 }
 
 .food-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: #e4c16b;
 }
 
 .food-card h3 {
   color: #e4c16b;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .food-image-wrap {
   position: relative;
   width: 100%;
-  height: 150px;
-  margin-bottom: 14px;
+  height: 145px;
+  margin-bottom: 12px;
   border-radius: 10px;
   overflow: hidden;
   background: #1b3b2d;
@@ -158,27 +163,28 @@ nav a:hover { color: #e4c16b; }
   position: absolute;
   left: 10px;
   bottom: 10px;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
   background: rgba(7, 27, 20, .9);
   border: 1px solid #e4c16b;
   border-radius: 50%;
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .price {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   font-weight: bold;
   font-size: 16px;
+  color: #f8f1df;
 }
 
 button {
   background: #c49b45;
   color: #102016;
   border: none;
-  padding: 11px 15px;
+  padding: 10px 14px;
   border-radius: 7px;
   font-weight: bold;
   cursor: pointer;
@@ -194,7 +200,7 @@ button:disabled {
 .cart {
   background: #102b20;
   border: 1px solid #80672f;
-  padding: 25px;
+  padding: 24px;
   border-radius: 15px;
   max-width: 800px;
   margin: auto;
@@ -206,7 +212,7 @@ button:disabled {
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid #52664f;
-  padding: 14px 0;
+  padding: 13px 0;
   flex-wrap: wrap;
 }
 
@@ -216,7 +222,7 @@ button:disabled {
   gap: 8px;
 }
 
-.cart-controls button { padding: 7px 12px; }
+.cart-controls button { padding: 6px 12px; }
 
 .remove {
   background: #9d3e35;
@@ -224,9 +230,9 @@ button:disabled {
 }
 
 .total {
-  margin-top: 20px;
+  margin-top: 18px;
   line-height: 2.1;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .total strong {
@@ -250,7 +256,7 @@ button:disabled {
 
 .order-btn {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
   padding: 15px;
   font-size: 16px;
 }
@@ -268,7 +274,7 @@ button:disabled {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 999;
   justify-content: center;
   align-items: center;
@@ -295,12 +301,12 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .modal-header h3 {
   color: #e4c16b;
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .close-modal-btn {
@@ -320,7 +326,7 @@ button:disabled {
 
 .select-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
   gap: 10px;
 }
 
@@ -341,24 +347,24 @@ button:disabled {
 .social {
   text-align: center;
   background: #0b241a;
-  padding: 50px 20px;
+  padding: 45px 20px;
 }
 
 .social h2 {
   color: #e4c16b;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .social p {
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .social a {
   display: inline-block;
   color: #e4c16b;
   border: 1px solid #c49b45;
-  padding: 12px 20px;
+  padding: 11px 18px;
   margin: 6px;
   border-radius: 8px;
   text-decoration: none;
@@ -371,7 +377,7 @@ button:disabled {
 
 footer {
   text-align: center;
-  padding: 22px;
+  padding: 20px;
   color: #c7b98f;
   background: #06150f;
 }
@@ -379,8 +385,8 @@ footer {
 @media(max-width: 600px) {
   header { flex-direction: column; }
   nav { justify-content: center; }
-  .hero { min-height: 320px; }
-  .section { padding: 40px 5%; }
+  .hero { min-height: 300px; }
+  .section { padding: 38px 5%; }
 }
 </style>
 </head>
@@ -500,10 +506,10 @@ function createDishArtwork(emoji, title, bgStart, bgEnd, accent) {
         </linearGradient>
       </defs>
       <rect width="400" height="240" fill="url(#g)"/>
-      <circle cx="200" cy="105" r="58" fill="rgba(255,255,255,0.08)" stroke="${accent}" stroke-width="2"/>
-      <text x="200" y="124" font-size="60" text-anchor="middle" dominant-baseline="middle">${emoji}</text>
-      <rect x="28" y="182" width="344" height="36" rx="10" fill="rgba(7,27,20,0.72)"/>
-      <text x="200" y="205" fill="#f8f1df" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">${safeLabel}</text>
+      <circle cx="200" cy="102" r="56" fill="rgba(255,255,255,0.08)" stroke="${accent}" stroke-width="2"/>
+      <text x="200" y="120" font-size="58" text-anchor="middle" dominant-baseline="middle">${emoji}</text>
+      <rect x="24" y="180" width="352" height="38" rx="10" fill="rgba(7,27,20,0.75)"/>
+      <text x="200" y="204" fill="#f8f1df" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">${safeLabel}</text>
     </svg>
   `.trim();
   return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
@@ -563,272 +569,4 @@ const foods = [
   // Chaq-chuqlar
   { name: "Qurt", price: 1000, category: "Chaq-chuqlar", emoji: "⚪", theme: ["#26241e", "#5c5646", "#e4c16b"] },
   { name: "Semechka (100 gr)", price: 10000, category: "Chaq-chuqlar", emoji: "🌻", theme: ["#29200b", "#6e5518", "#f39c12"] },
-  { name: "Sirniy palochka (10 minglik)", price: 10000, category: "Chaq-chuqlar", emoji: "🧀", theme: ["#2b210b", "#755917", "#f39c12"] },
-  { name: "Sirniy palochka (15 minglik)", price: 15000, category: "Chaq-chuqlar", emoji: "🧀", theme: ["#2b210b", "#755917", "#f39c12"] },
-  { name: "Yeryong'oq", price: 10000, category: "Chaq-chuqlar", emoji: "🥜", theme: ["#29190c", "#6e421d", "#e4c16b"] },
-  { name: "Pista", price: 10000, category: "Chaq-chuqlar", emoji: "🌰", theme: ["#182612", "#395c29", "#2ecc71"] }
-];
-
-let cart = [];
-let selectedPlace = null;
-let sendAfterSelect = false;
-
-const params = new URLSearchParams(window.location.search);
-const requestedTable = Number(params.get("stol"));
-
-if (Number.isInteger(requestedTable) && TABLE_NUMBERS.includes(requestedTable)) {
-  selectedPlace = `Stol № ${requestedTable}`;
-}
-
-function updatePlaceLabel() {
-  document.getElementById("tableNumber").textContent =
-    selectedPlace || "Tanlanmagan";
-}
-
-function renderPlaceOptions() {
-  const roomsGrid = document.getElementById("roomsGrid");
-  const tablesGrid = document.getElementById("tablesGrid");
-
-  roomsGrid.innerHTML = ROOM_NUMBERS.map(room => `
-    <button type="button" class="place-btn" onclick="selectPlace('Xona № ${room}')">
-      Xona ${room}
-    </button>
-  `).join("");
-
-  tablesGrid.innerHTML = TABLE_NUMBERS.map(table => `
-    <button type="button" class="place-btn" onclick="selectPlace('Stol № ${table}')">
-      Stol ${table}
-    </button>
-  `).join("");
-}
-
-function openPlaceModal(shouldSendAfter = false) {
-  sendAfterSelect = shouldSendAfter;
-  document.getElementById("placeModal").classList.add("active");
-}
-
-function closePlaceModal() {
-  sendAfterSelect = false;
-  document.getElementById("placeModal").classList.remove("active");
-}
-
-function selectPlace(placeName) {
-  selectedPlace = placeName;
-  updatePlaceLabel();
-  const shouldSend = sendAfterSelect;
-  closePlaceModal();
-
-  if (shouldSend) {
-    sendOrder();
-  }
-}
-
-function renderMenu() {
-  const menu = document.getElementById("menuList");
-  const categories = [...new Set(foods.map(food => food.category))];
-
-  menu.innerHTML = categories.map(category => `
-    <h2 class="category-title">${category}</h2>
-
-    ${foods.map((food, index) => {
-      if (food.category !== category) return "";
-
-      const [bgStart, bgEnd, accent] = food.theme || ["#102b20", "#1b3b2d", "#e4c16b"];
-      const imgSrc = createDishArtwork(food.emoji, food.name, bgStart, bgEnd, accent);
-
-      return `
-        <div class="food-card">
-          <div>
-            <div class="food-image-wrap">
-              <img
-                class="food-image"
-                src="${imgSrc}"
-                alt="${food.name}"
-                loading="lazy"
-              >
-              <span class="food-emoji" aria-hidden="true">${food.emoji}</span>
-            </div>
-
-            <h3>${food.emoji} ${food.name}</h3>
-          </div>
-
-          <div>
-            <p class="price">
-              ${food.price.toLocaleString("uz-UZ")} so'm
-            </p>
-
-            <button type="button" onclick="addToCart(${index})">
-              Savatchaga qo'shish
-            </button>
-          </div>
-        </div>
-      `;
-    }).join("")}
-  `).join("");
-}
-
-function addToCart(index) {
-  const food = foods[index];
-  const existing = cart.find(item => item.name === food.name);
-
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({
-      name: food.name,
-      price: food.price,
-      quantity: 1
-    });
-  }
-
-  renderCart();
-}
-
-function changeQuantity(index, amount) {
-  cart[index].quantity += amount;
-
-  if (cart[index].quantity <= 0) {
-    cart.splice(index, 1);
-  }
-
-  renderCart();
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  renderCart();
-}
-
-function renderCart() {
-  const cartItems = document.getElementById("cartItems");
-
-  if (cart.length === 0) {
-    cartItems.innerHTML = "Savatcha hozircha bo'sh.";
-  } else {
-    cartItems.innerHTML = cart.map((item, index) => `
-      <div class="cart-item">
-        <div>
-          <strong>${item.name}</strong>
-          <br>
-          ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm
-        </div>
-
-        <div class="cart-controls">
-          <button type="button" onclick="changeQuantity(${index}, -1)">−</button>
-          <span>${item.quantity}</span>
-          <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
-          <button type="button" class="remove" onclick="removeItem(${index})">
-            O'chirish
-          </button>
-        </div>
-      </div>
-    `).join("");
-  }
-
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
-  );
-
-  const service = Math.round(subtotal * 0.10);
-  const total = subtotal + service;
-
-  document.getElementById("subtotal").textContent =
-    subtotal.toLocaleString("uz-UZ");
-
-  document.getElementById("service").textContent =
-    service.toLocaleString("uz-UZ");
-
-  document.getElementById("total").textContent =
-    total.toLocaleString("uz-UZ");
-}
-
-function handleOrderClick() {
-  if (cart.length === 0) {
-    alert("Avval savatchaga taom yoki mahsulot qo'shing!");
-    return;
-  }
-
-  if (!selectedPlace) {
-    alert("Stolni tanlang!");
-    openPlaceModal(true);
-    return;
-  }
-
-  sendOrder();
-}
-
-async function sendOrder() {
-  const statusEl = document.getElementById("statusMsg");
-  const orderBtn = document.getElementById("orderBtn");
-
-  if (cart.length === 0) {
-    alert("Avval savatchaga taom yoki mahsulot qo'shing!");
-    return;
-  }
-
-  if (!selectedPlace) {
-    alert("Stolni tanlang!");
-    openPlaceModal(true);
-    return;
-  }
-
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
-  );
-
-  const service = Math.round(subtotal * 0.10);
-  const total = subtotal + service;
-
-  const message = [
-    "🍽 ROXAT CHOYXONA — YANGI BUYURTMA",
-    "",
-    "🪑 Joylashuv: " + selectedPlace,
-    "",
-    ...cart.map(item =>
-      `▫️ ${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm`
-    ),
-    "",
-    "📦 Mahsulotlar: " + subtotal.toLocaleString("uz-UZ") + " so'm",
-    "🧾 Xizmat haqi (10%): " + service.toLocaleString("uz-UZ") + " so'm",
-    "💰 JAMI: " + total.toLocaleString("uz-UZ") + " so'm"
-  ].join("\n");
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    try {
-      await navigator.clipboard.writeText(message);
-    } catch (e) {}
-  }
-
-  orderBtn.disabled = true;
-  statusEl.textContent = "Buyurtma Telegram guruhiga yuborilmoqda...";
-
-  const apiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${encodeURIComponent(GROUP_CHAT_ID)}&text=${encodeURIComponent(message)}`;
-
-  try {
-    // CORS blokini chetlab o'tib Telegram Bot API ga GET so'rov yuborish
-    await fetch(apiUrl, { mode: "no-cors" });
-
-    statusEl.textContent = "✅ Buyurtma Telegram guruhiga yuborildi!";
-    alert("Buyurtmangiz Telegram guruhiga yuborildi! Rahmat.");
-    cart = [];
-    renderCart();
-  } catch (error) {
-    // Agar internet uzilgan bo'lsa, Image ping orqali urinish
-    const img = new Image();
-    img.src = apiUrl;
-    statusEl.textContent = "✅ Buyurtma yuborildi!";
-    cart = [];
-    renderCart();
-  } finally {
-    orderBtn.disabled = false;
-  }
-}
-
-updatePlaceLabel();
-renderPlaceOptions();
-renderMenu();
-renderCart();
-</script>
-
-</body>
-</html>
+  { name: "Sirniy palochka (10 minglik)", price: 10000, category: "Chaq-chuqlar", emoji: "🧀
