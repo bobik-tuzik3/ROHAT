@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -183,6 +182,11 @@ button {
 
 button:hover { background: #e6c36f; }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .cart {
   background: #102b20;
   border: 1px solid #80672f;
@@ -231,6 +235,13 @@ button:hover { background: #e6c36f; }
   margin-top: 20px;
   padding: 15px;
   font-size: 16px;
+}
+
+.status-msg {
+  margin-top: 12px;
+  font-size: 14px;
+  min-height: 20px;
+  color: #e4c16b;
 }
 
 .social {
@@ -320,9 +331,10 @@ footer {
       <p>Stol raqami: <strong id="tableNumber">Belgilanmagan</strong></p>
     </div>
 
-    <button class="order-btn" onclick="sendOrder()">
-      Telegram orqali buyurtma berish
+    <button class="order-btn" id="orderBtn" onclick="sendOrder()">
+      Telegram guruhiga buyurtma yuborish
     </button>
+    <div class="status-msg" id="statusMsg"></div>
   </div>
 </section>
 
@@ -333,6 +345,10 @@ footer {
     ROXAT CHOYXONA yangiliklari, yangi taomlar
     va aksiyalarni rasmiy sahifalarimizda kuzatib boring!
   </p>
+
+  <a href="https://t.me/Roxat_choyxonaa" target="_blank" rel="noopener noreferrer">
+    Telegram buyurtmalar guruhi
+  </a>
 
   <a href="https://t.me/roxat_navruz" target="_blank" rel="noopener noreferrer">
     Telegram yangiliklar
@@ -348,28 +364,31 @@ footer {
 </footer>
 
 <script>
+const BOT_TOKEN = "9036320455:AAFA_WHwX9TOnyhLaqb3niQm7o94dtQ5xsQ";
+const GROUP_CHAT_ID = "-1004414848111";
+
 const foods = [
-  { name: "Sho'rva", price: 30000, category: "Suyuq taomlar", emoji: "🍲", image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
-  { name: "Lag'mon", price: 35000, category: "Suyuq taomlar", emoji: "🍜", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" },
-  { name: "Mastava", price: 30000, category: "Suyuq taomlar", emoji: "🍚", image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
-  { name: "Chuchvara", price: 30000, category: "Suyuq taomlar", emoji: "🥣", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" },
+  { name: "Sho'rva", price: 30000, category: "Suyuq taomlar", emoji: "🍲", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqQrfMq1n-xj-QCKxyB4BNb6UOF1t7pS-fVn4YKFHAJeaMA4EH2Bdz7xE&s=10" },
+  { name: "Lag'mon", price: 35000, category: "Suyuq taomlar", emoji: "🍜", image: "https://upload.wikimedia.org/wikipedia/commons/0/0f/%D0%9F%D0%BE%D1%80%D1%86%D0%B8%D1%8F_%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%D0%B0.jpg?utm_source=ru.wikipedia.org&utm_campaign=index&utm_content=original" },
+  { name: "Mastava", price: 30000, category: "Suyuq taomlar", emoji: "🍚", image: "https://www.photorecept.ru/wp-content/uploads/2022/03/sup-mastava-1.jpg" },
+  { name: "Chuchvara", price: 30000, category: "Suyuq taomlar", emoji: "🥣", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5dcTeUwg3oZ9zcGYRAqYlOmYuRgx5vv3rNzoNtqOpaumfyPeAxqg1EIw&s=10" },
 
-  { name: "Krilishka fri", price: 40000, category: "Asosiy taomlar", emoji: "🍗", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80" },
-  { name: "Fri", price: 15000, category: "Asosiy taomlar", emoji: "🍟", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80" },
-  { name: "Manti (1 dona)", price: 8000, category: "Asosiy taomlar", emoji: "🥟", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" },
-  { name: "Tabaka", price: 65000, category: "Asosiy taomlar", emoji: "🍗", image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80" },
+  { name: "Krilishka fri", price: 40000, category: "Asosiy taomlar", emoji: "🍗", image: "https://stolle-samara.ru/image/cache/catalog/menu/goryachee/kuraao-900x600.jpg" },
+  { name: "Fri", price: 15000, category: "Asosiy taomlar", emoji: "🍟", image: "https://buy.am/media/image/4c/45/50/French_Fries_jeans_bistro.webp" },
+  { name: "Manti (1 dona)", price: 8000, category: "Asosiy taomlar", emoji: "🥟", image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D0%BD%D1%82%D1%8B.jpg/330px-%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D0%BD%D1%82%D1%8B.jpg?utm_source=ru.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" },
+  { name: "Tabaka", price: 65000, category: "Asosiy taomlar", emoji: "🍗", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCGLn4DtPCS1CzuLnoLBQV7BGdE9gEptLtHyAnRHQbFK0ZErz3wtWIb87T&s=10" },
 
-  { name: "Vaguri (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🥩", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-  { name: "Jiz (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🍖", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-  { name: "Baliq (1 kg)", price: 90000, category: "Kilogramm bo'yicha", emoji: "🐟", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80" },
+  { name: "Vaguri (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🥩", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6v5lvJ9wNAvW0FdR5RDCk9S-mNkqu5RU2ljWP0xmVWgH3Ylva4KaPcv3p&s=10" },
+  { name: "Jiz (1 kg)", price: 280000, category: "Kilogramm bo'yicha", emoji: "🍖", image: "https://avatars.mds.yandex.net/get-altay/19613367/2a0000019d0e5be0377fa1233db511b336eb/L_height" },
+  { name: "Baliq (1 kg)", price: 90000, category: "Kilogramm bo'yicha", emoji: "🐟", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ73vZJjMnEEcL2CTUhSw1IUqjZzz2BRCouiiUtAA-vKsDerBN9Mahjg8&s=10" },
 
-  { name: "Qo'y jaz", price: 32000, category: "Shashliklar", emoji: "🍖", image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80" },
-  { name: "Qiymali shashlik (20 minglik)", price: 20000, category: "Shashliklar", emoji: "🍢", image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80" },
-  { name: "Qiymali shashlik (15 minglik)", price: 15000, category: "Shashliklar", emoji: "🍢", image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80" },
-  { name: "O'rdak", price: 20000, category: "Shashliklar", emoji: "🦆", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-  { name: "Tovuq qanot", price: 20000, category: "Shashliklar", emoji: "🍗", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80" },
-  { name: "Dumba", price: 25000, category: "Shashliklar", emoji: "🥓", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-  { name: "Mangal tovuq", price: 65000, category: "Shashliklar", emoji: "🔥", image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80" }
+  { name: "Qo'y jaz", price: 32000, category: "Shashliklar", emoji: "🍖", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROjNdN-tIrNHolArShZF4IxCfwKAWnDbA_VWnIwb3Ryr1O9HkYADWgZD8&s=10" },
+  { name: "Qiymali shashlik (20 minglik)", price: 20000, category: "Shashliklar", emoji: "🍢", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROjNdN-tIrNHolArShZF4IxCfwKAWnDbA_VWnIwb3Ryr1O9HkYADWgZD8&s=10" },
+  { name: "Qiymali shashlik (15 minglik)", price: 15000, category: "Shashliklar", emoji: "🍢", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROjNdN-tIrNHolArShZF4IxCfwKAWnDbA_VWnIwb3Ryr1O9HkYADWgZD8&s=10" },
+  { name: "O'rdak", price: 20000, category: "Shashliklar", emoji: "🦆", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv6-IzPCHuedS9kcR0NX8cTNS0CYAQXbypL17JjyH_MelkExPwRbVDLfU&s=10" },
+  { name: "Tovuq qanot", price: 20000, category: "Shashliklar", emoji: "🍗", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ54VQEG6x6DvW6M21wJ4mL08W8diy0e81rAD8HX4FpB4GSbtwCq-G9YGVS&s=10" },
+  { name: "Dumba", price: 25000, category: "Shashliklar", emoji: "🥓", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdr6PzemCvcQ7vmq2YYttxncLGDPWwklbx7HxBMtVsKw&s=10" },
+  { name: "Mangal tovuq", price: 65000, category: "Shashliklar", emoji: "🔥", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRza9sZ7YGJoRZw7aobczSP_hUeQ2vLgozNxCpb8rBxvZQqvXdTp3plIrT8&s=10" }
 ];
 
 let cart = [];
@@ -502,6 +521,9 @@ function renderCart() {
 }
 
 async function sendOrder() {
+  const statusEl = document.getElementById("statusMsg");
+  const orderBtn = document.getElementById("orderBtn");
+
   if (cart.length === 0) {
     alert("Avval savatchaga taom qo'shing!");
     return;
@@ -515,27 +537,55 @@ async function sendOrder() {
   const total = subtotal + service;
 
   const message = [
-    "ROXAT CHOYXONA — YANGI BUYURTMA",
+    "🍽 ROXAT CHOYXONA — YANGI BUYURTMA",
     "",
-    "Stol: " + (tableNumber || "Belgilanmagan"),
+    "🪑 Stol: " + (tableNumber ? "№ " + tableNumber : "Belgilanmagan"),
     "",
     ...cart.map(item =>
-      `${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm`
+      `▫️ ${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString("uz-UZ")} so'm`
     ),
     "",
-    "Mahsulotlar: " + subtotal.toLocaleString("uz-UZ") + " so'm",
-    "Xizmat haqi: " + service.toLocaleString("uz-UZ") + " so'm",
-    "JAMI: " + total.toLocaleString("uz-UZ") + " so'm"
+    "📦 Mahsulotlar: " + subtotal.toLocaleString("uz-UZ") + " so'm",
+    "🧾 Xizmat haqi (10%): " + service.toLocaleString("uz-UZ") + " so'm",
+    "💰 JAMI: " + total.toLocaleString("uz-UZ") + " so'm"
   ].join("\n");
 
-  try {
-    await navigator.clipboard.writeText(message);
-    alert("Buyurtma matni nusxalandi. Telegram guruhiga kirib yuboring.");
-  } catch (error) {
-    alert("Matnni avtomatik nusxalash imkoni bo'lmadi. Telegram guruhiga o'ting.");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(message);
+    } catch (e) {}
   }
 
-  window.open("https://t.me/Roxat_choyxonaa", "_blank");
+  orderBtn.disabled = true;
+  statusEl.textContent = "Buyurtma Telegram guruhiga yuborilmoqda...";
+
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: GROUP_CHAT_ID,
+        text: message
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.ok) {
+      statusEl.textContent = "✅ Buyurtma Telegram guruhiga yuborildi!";
+      alert("Buyurtmangiz guruhga yuborildi! Rahmat.");
+      cart = [];
+      renderCart();
+    } else {
+      statusEl.textContent = "⚠️ Bot yubora olmadi (bot guruhda a'zo/admin ekanligini tekshiring). Matn nusxalandi.";
+      window.open("https://t.me/Roxat_choyxonaa", "_blank", "noopener,noreferrer");
+    }
+  } catch (error) {
+    statusEl.textContent = "⚠️ Tarmoq yoki CORS xatoligi. Buyurtma matni nusxalandi, guruhga tashlang.";
+    window.open("https://t.me/Roxat_choyxonaa", "_blank", "noopener,noreferrer");
+  } finally {
+    orderBtn.disabled = false;
+  }
 }
 
 renderMenu();
